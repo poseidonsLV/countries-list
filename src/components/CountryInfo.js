@@ -5,7 +5,6 @@ import "../styles/CountryInfo.css";
 function CountryInfo() {
   const { name } = useParams();
   const history = useHistory();
-
   const [countries, setCountries] = useContext(CountriesContext);
   const [country, setCountry] = useState([]);
   function goBack() {
