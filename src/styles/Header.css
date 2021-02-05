@@ -1,0 +1,18 @@
+.Header {
+  height: 80px;
+  color: white;
+  font-weight: 600;
+  background: hsl(209, 23%, 22%);
+  box-shadow: 0px 5px 7px 0.1px rgba(8, 8, 8, 0.4);
+  display: flex;
+  align-items: center;
+}
+.header-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80vw;
+  margin: 0 auto;
+}

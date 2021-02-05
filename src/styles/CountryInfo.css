@@ -1,0 +1,125 @@
+.CountryInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+.back-button-container {
+  width: 100%;
+  padding: 20px 50px;
+}
+.back-button-container button {
+  margin: 5px;
+  padding: 6px 30px;
+  display: flex;
+  background: hsl(208, 29%, 24%);
+  border-radius: 4px;
+  transition: all 0.25s;
+  outline: none;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.back-button-container button:hover {
+  transform: scale(1.03);
+}
+.countryInfo-bottom {
+  margin: 0 20px;
+  display: flex;
+  display: grid;
+  height: 90vh;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+.left-side {
+  margin-right: 20px;
+}
+.countryInfo-flag {
+  display: flex;
+}
+.countryInfo-flag img {
+  max-width: 600px;
+  width: 100%;
+}
+.right-side .col-1 .countryInfo-name {
+  font-size: 3rem;
+}
+.right-side .col-1 {
+  letter-spacing: 0.8px;
+}
+.countryInfo-languages {
+  display: flex;
+}
+.right-side .col-1 span,
+.right-side .col-2 span {
+  margin-left: 5px;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.countryInfo-row-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+
+.right-side .col-2 {
+  margin-top: 60px;
+}
+.countryInfo-row-2 {
+  max-width: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  margin-top: 40px;
+  align-items: center;
+}
+.countryInfo-row-2 h4 {
+  margin-right: 20px;
+}
+
+.countryInfo-row-2 p {
+  margin: 5px;
+  padding: 6px 30px;
+  display: flex;
+  background: hsl(208, 29%, 24%);
+  border-radius: 4px;
+  transition: all 0.25s;
+}
+.countryInfo-row-2 p:hover {
+  background: hsl(208, 29%, 15%);
+}
+
+@media (max-width: 952px) {
+  .countryInfo-bottom {
+    grid-template-columns: 1fr;
+  }
+  .right-side {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .countryInfo-row-1 {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .countryInfo-row-2 {
+    justify-content: center;
+  }
+  .countryInfo-name {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 425px) {
+  .countryInfo-row-2 {
+    flex-direction: column;
+  }
+  .countryInfo-row-2 h4 {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}
