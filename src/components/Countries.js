@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useMemo } from "react";
 import { CountriesContext } from "../context/CountriesContext";
 import "../styles/Countries.css";
 import Country from "./Country";
@@ -9,20 +9,34 @@ function Countries() {
   const [countryName, setCountryName] = useState(null);
 
   useEffect(() => {
-    filterCountriesByRegion();
-  }, [region]);
-
-  function filterCountriesByRegion() {
-    if (region.length > 2) {
-      return fetch(`https://restcountries.eu/rest/v2/region/${region}`)
-        .then((res) => res.json())
-        .then((data) => setCountries(data));
-    } else {
-      return fetch(`https://restcountries.eu/rest/v2/all`)
-        .then((res) => res.json())
-        .then((data) => setCountries(data));
+    function filterCountriesByRegion() {
+      if (region.length > 2) {
+        return fetch(`https://restcountries.eu/rest/v2/region/${region}`)
+          .then((res) => res.json())
+          .then((data) => setCountries(data));
+      } else {
+        return fetch(`https://restcountries.eu/rest/v2/all`)
+          .then((res) => res.json())
+          .then((data) => setCountries(data));
+      }
     }
-  }
+    filterCountriesByRegion();
+  }, [region, setCountries]);
+
+  const filteredCountries = useMemo(() => {
+    if (countryName == null) return countries;
+
+    return countries.filter((data) => {
+      const matchesName = data.name
+        .toLowerCase()
+        .includes(countryName.toLowerCase());
+      if (matchesName) {
+        return true;
+      }
+      return false;
+    });
+  }, [countries, countryName]);
+
   return (
     <>
       <div className="Filters">
@@ -52,24 +66,9 @@ function Countries() {
             <h1>Loading...</h1>
           </div>
         )}
-        {countries
-          .filter((data) => {
-            if (countryName === null) return data;
-            else if (
-              data.name.toLowerCase().includes(countryName.toLowerCase())
-            ) {
-              return data;
-            }
-          })
-          .map((country) => (
-            <Country
-              name={country.name}
-              population={country.population}
-              region={country.region}
-              capital={country.capital}
-              flag={country.flag}
-            />
-          ))}
+        {filteredCountries.map((dataset) => (
+          <Country {...dataset} />
+        ))}
       </div>
     </>
   );

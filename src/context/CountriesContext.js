@@ -4,7 +4,6 @@ export const CountriesContext = createContext();
 
 export const CountriesProvider = (props) => {
   const [countries, setCountries] = useState([]);
-  const [theme, setTheme] = useState("dark");
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
       .then((res) => res.json())
